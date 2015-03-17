@@ -1,0 +1,36 @@
+<body>
+<div class = "top">
+<h1>Know Your World</h1>
+</div>
+<ul>
+
+<div>
+  |  AFRICA |  MIDDLE EAST |  ASIA PACIFIC |  EUROPE |  AMERICAS
+</div>
+
+  <% @articles.each do |subsection, section_articles| %>
+
+  <div class = "titles" >
+    <h2>|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= subsection %></h2> 
+  </div>
+    
+    <% section_articles.each do |article| %>
+      <h3><%= article[:title] %></h3>
+      <div class = "line"> </div>
+      <div class = "content">
+      <p class= "article"> <%= article[:abstract] %></p>
+      <li class = "list">
+
+      <%= link_to "|   Read Article", article[:link] %>
+      <%= link_to "|   Search This Topic", "#{@relevant_search}" %>
+      <%= link_to "|   Save Article For Later" %>
+
+      </li>
+      <div class = "line"> </div>
+    </div>
+    <% end %>
+  <% end %>
+</ul>
+
+
+</body>
