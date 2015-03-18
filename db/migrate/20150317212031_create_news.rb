@@ -1,10 +1,10 @@
 class CreateNews < ActiveRecord::Migration
   def change
     create_table :news do |t|
-      t.string :index
-      t.string :show
-      t.string :update
-      t.string :destroy
+      t.integer :user_id
+      t.string :title
+      t.text :abstract
+
 
       t.timestamps null: false
     end

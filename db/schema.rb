@@ -17,10 +17,9 @@ ActiveRecord::Schema.define(version: 20150317212031) do
   enable_extension "plpgsql"
 
   create_table "news", force: :cascade do |t|
-    t.string   "index"
-    t.string   "show"
-    t.string   "update"
-    t.string   "destroy"
+    t.integer  "user_id"
+    t.string   "title"
+    t.text     "abstract"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

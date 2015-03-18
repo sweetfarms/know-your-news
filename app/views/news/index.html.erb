@@ -7,7 +7,7 @@
 <div>
   |  AFRICA |  MIDDLE EAST |  ASIA PACIFIC |  EUROPE |  AMERICAS
 </div>
-
+<%= @articles %>
   <% @articles.each do |subsection, section_articles| %>
 
   <div class = "titles" >
@@ -22,8 +22,8 @@
       <li class = "list">
 
       <%= link_to "|   Read Article", article[:link] %>
-      <%= link_to "|   Search This Topic", "#{@relevant_search}" %>
-      <%= link_to "|   Save Article For Later" %>
+      <%= link_to "|   Search Relevant Articles" %>
+      <%= link_to "|   Save Article", {:action => :create}, :method => :post %>
 
       </li>
       <div class = "line"> </div>

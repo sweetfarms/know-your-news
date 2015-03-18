@@ -3,6 +3,7 @@ module NytimesHelper
   class NYTimes
     @@url_base  = "http://api.nytimes.com/svc/news/v3/content/nyt/world.json?api-key="
     @@client_id = Rails.application.secrets.nytimes_top_id
+    @@search_url_base = "http://query.nytimes.com/search/sitesearch/?action=click&contentCollection&region=TopBar&WT.nav=searchWidget&module=SearchSubmit&pgtype=Homepage#/"
     @@search_id = Rails.application.secrets.nytimes_search_id
 
     def self.retrieve_articles
@@ -33,7 +34,8 @@ module NytimesHelper
           :abstract          => article["abstract"],
           :link              => article["url"],
           :geographic_facet  => article["geo_facet"],
-          :description_facet => article["des_facet"]
+          :description_facet => article["des_facet"],
+          # :relevant_articles => NYTimes.relevant_articles
         })
       end
       
@@ -41,9 +43,9 @@ module NytimesHelper
     end
 
 
-    def self.relevant_articles
-        find = HTTParty.get("http://api.nytimes.com/svc/search/v2/articlesearch.json?fq=" + :description_facet[0].split.join('+') + "&fq=" + :geographic_facet[0].split.join('+') + "&api-key=#{@@search_id}")
-    end
+    # def self.relevant_articles
+    #     find = @@search_url_base + articles.[article["subsection"]]description_facet"][0].split.join('+') + articles.[article["subsection"]]geographic_facet"][0].split.join('+')
+    # end
 
   end
 
