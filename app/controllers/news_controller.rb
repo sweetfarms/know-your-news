@@ -6,18 +6,21 @@ class NewsController < ApplicationController
   end
 
   def create
-    article = NYTimes.retrieve_articles
-    articles = []
-    article.each do |subsection, section_articles|
-        subsection  
-      section_articles.each do |article|  
-        articles.push(article[:title])  
-        articles.push(article[:abstract])  
-      end  
-    end  
-
-    News.create(user_id: current_user.id, title: articles[0], abstract: articles[1])
+    @news = News.new(user_id: current_user.id, title: article[:title], abstract: article[:abstract])     
+    respond_to do |format|
+      if @news.save
+        format.html  { redirect_to(@news,
+                      :notice => 'Post was successfully created.') }
+        format.json  { render :json => @news,
+                      :status => :created, :location => @news }
+      else
+        format.html  { render :action => "new" }
+        format.json  { render :json => @news.errors,
+                      :status => :unprocessable_entity }
+      end
+    end
   end
+  
 
   def show
   end

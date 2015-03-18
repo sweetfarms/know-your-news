@@ -7,11 +7,11 @@
 <div>
   |  AFRICA |  MIDDLE EAST |  ASIA PACIFIC |  EUROPE |  AMERICAS
 </div>
-<%= @articles %>
+
   <% @articles.each do |subsection, section_articles| %>
 
   <div class = "titles" >
-    <h2>|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= subsection %></h2> 
+    <h2><%= subsection %></h2> 
   </div>
     
     <% section_articles.each do |article| %>
@@ -23,8 +23,7 @@
 
       <%= link_to "|   Read Article", article[:link] %>
       <%= link_to "|   Search Relevant Articles" %>
-      <%= link_to "|   Save Article", {:action => :create}, :method => :post %>
-
+      <%= link_to "|   Save Article", :controller => "news", :action => "create", title: article[:title], abstract: article[:abstract] %>
       </li>
       <div class = "line"> </div>
     </div>

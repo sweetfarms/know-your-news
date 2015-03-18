@@ -8,6 +8,8 @@ Rails.application.routes.draw do
 
   get 'news/destroy'
 
+  get 'news/create'
+
   devise_for :users
 
   root 'welcome#index'
