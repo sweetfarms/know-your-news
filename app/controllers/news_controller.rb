@@ -6,7 +6,7 @@ class NewsController < ApplicationController
   end
 
   def create
-    @news = News.new(user_id: current_user.id, title: article[:title], abstract: article[:abstract])     
+    @news = News.new(user_id: current_user.id, title: params[:title], abstract: params[:abstract])     
     respond_to do |format|
       if @news.save
         format.html  { redirect_to(@news,
