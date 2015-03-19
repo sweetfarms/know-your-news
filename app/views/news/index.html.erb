@@ -5,7 +5,9 @@
 <ul>
 
 <div>
-  |  AFRICA |  MIDDLE EAST |  ASIA PACIFIC |  EUROPE |  AMERICAS
+  <% @articles.each do |nav_headers, uneeded_articles| %>
+  | <%= nav_headers %> 
+  <% end %>
 </div>
 
   <% @articles.each do |subsection, section_articles| %>
