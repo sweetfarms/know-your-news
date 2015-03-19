@@ -43,9 +43,9 @@ module NytimesHelper
     end
 
 
-    # def self.relevant_articles
-    #     find = @@search_url_base + articles.[article["subsection"]]description_facet"][0].split.join('+') + articles.[article["subsection"]]geographic_facet"][0].split.join('+')
-    # end
+    def self.relevant_articles
+        find = @@search_url_base + articles.[article["subsection"]]description_facet"][0].split.join('+') + articles.[article["subsection"]]geographic_facet"][0].split.join('+')
+    end
 
   end
 
