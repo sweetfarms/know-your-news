@@ -11,14 +11,14 @@
   <% @articles.each do |subsection, section_articles| %>
 
   <div class = "titles" >
-    <h2><%= subsection %></h2> 
+    <h2><%= subsection.html_safe %></h2> 
   </div>
     
     <% section_articles.each do |article| %>
-      <h3><%= article[:title] %></h3>
+      <h3><%= article[:title].html_safe %></h3>
       <div class = "line"> </div>
       <div class = "content">
-      <p class= "article"> <%= article[:abstract] %></p>
+      <p class= "article"> <%= article[:abstract].html_safe %></p>
       <li class = "list">
 
       <%= link_to "|   Read Article", article[:link] %>
