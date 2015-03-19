@@ -23,7 +23,7 @@
 
       <%= link_to "|   Read Article", article[:link] %>
       <%= link_to "|   Search Relevant Articles" %>
-      <%= link_to "|   Save Article", :controller => "news", :action => "create", title: article[:title], abstract: article[:abstract] %>
+      <%= link_to "|   Save Article", :controller => "news", :action => "create", title: article[:title], abstract: article[:abstract], article_url: article[:link] %>
       </li>
       <div class = "line"> </div>
     </div>
