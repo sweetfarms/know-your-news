@@ -5,7 +5,7 @@
 <ul>
 
 <div>
-  <% @articles.each do |nav_headers, uneeded_articles| %>
+  <% @articles.each do |nav_headers, not_needed_articles| %>
   | <%= nav_headers %> 
   <% end %>
 </div>
@@ -13,7 +13,7 @@
   <% @articles.each do |subsection, section_articles| %>
 
   <div class = "titles" >
-    <h2><%= subsection.html_safe %></h2> 
+    <h2><%= subsection %></h2> 
   </div>
     
     <% section_articles.each do |article| %>
@@ -23,9 +23,13 @@
       <p class= "article"> <%= article[:abstract].html_safe %></p>
       <li class = "list">
 
-      <%= link_to "|   Read Article", article[:link] %>
+      <%= link_to "Read Article", article[:link] %>
       <%= link_to "|   Search Relevant Articles" %>
-      <%= link_to "|   Save Article", :controller => "news", :action => "create", title: article[:title], abstract: article[:abstract], article_url: article[:link] %>
+      <%= link_to "|   Save Article", :controller => "news", 
+                                      :action => "create", 
+                                      title: article[:title], 
+                                      abstract: article[:abstract], 
+                                      article_url: article[:link] %>
       </li>
       <div class = "line"> </div>
     </div>
