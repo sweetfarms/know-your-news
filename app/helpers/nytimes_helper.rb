@@ -35,17 +35,13 @@ module NytimesHelper
           :link              => article["url"],
           :geographic_facet  => article["geo_facet"],
           :description_facet => article["des_facet"],
-          :relevant_articles => NYTimes.relevant_articles
+          :relevant_articles => @@search_url_base + article["title"].split.join('+').gsub(/\s+/, "+").downcase + "&fq=" + article["geo_facet"].split.join('+').gsub(/\s+/, "+").downcase + "&api-key=" + @@search_id
+          
         })
-      end
-      
+        end
       return articles
     end
   end
-
-    def self.relevant_articles
-      search = @@search_url_base + article[0]["des_facet"][0].split.join('+') + "&fq=" + article[0]["geo_facet"][0].split.join('+') + "&api-key=" + @@search_id
-    end
 
 
 end

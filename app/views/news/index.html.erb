@@ -24,7 +24,9 @@
       <li class = "list">
 
       <%= link_to "Read Article", article[:link] %>
-      <%= link_to "|   Search Relevant Articles" %>
+
+      <%= link_to "|   See Relevant Articles" %>
+
       <%= link_to "|   Save Article", :controller => "news", 
                                       :action => "create", 
                                       title: article[:title], 
@@ -35,6 +37,7 @@
     </div>
     <% end %>
   <% end %>
+  <%binding.pry%>
 </ul>
 
 
