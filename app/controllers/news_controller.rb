@@ -23,12 +23,15 @@ class NewsController < ApplicationController
   
 
   def show
-    @news = News.find_by_id(current_user.id)
+    @news = User.find_by_id(current_user.id).news
   end
 
   def update
   end
 
   def destroy
+    @news = News.find(params[:id])
+    @news.destroy
+    redirect_to action: :show
   end
 end

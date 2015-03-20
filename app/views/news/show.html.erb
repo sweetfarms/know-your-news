@@ -1,1 +1,12 @@
-saved successfully!
+<h1> saved successfully! </h1>
+
+<% @news.each do |news| %>
+<ul>
+  <li> <%= news[:title] %> </li>
+  <li> <%= news[:abstract] %> </li>
+  <li> <%= link_to "Read Full Article at NYTimes.com", news[:article_url] %>  <%= link_to "Delete this Article", news, method: :delete %> </li>
+</ul>
+
+<% end %>
+
+
