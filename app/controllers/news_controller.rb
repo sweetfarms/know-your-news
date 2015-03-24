@@ -1,6 +1,8 @@
 class NewsController < ApplicationController
   include NytimesHelper
 
+   before_action :authenticate_user!, only: [:create]
+
   def index
      @articles = NYTimes.retrieve_articles
   end

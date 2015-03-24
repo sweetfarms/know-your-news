@@ -20,12 +20,11 @@
       <h3><%= article[:title].html_safe %></h3>
       <div class = "line"> </div>
       <div class = "content">
-      <p class= "article"> <%= article[:abstract].html_safe %></p>
-      <li class = "list">
+      <p class= "article"> <%= article[:abstract].html_safe %> </p>
+      <li>
 
-      <%= link_to "Read Article", article[:link] %>
-
-      <%= link_to "|   See Relevant Articles" %>
+      <%= link_to "Read Article", article[:link], :target => "_blank" %>
+      <%= link_to "|   See Relevant Articles", article[:relevant_articles] %>
 
       <%= link_to "|   Save Article", :controller => "news", 
                                       :action => "create", 
