@@ -1,7 +1,10 @@
 <h1> saved successfully! </h1>
 
+<p> <%= link_to "Home", :root  %> </p>
+
 <% @news.each do |news| %>
 <ul>
+  <li> <%= news[:created_at].strftime("%B %d, %Y") %> </li>
   <li> <%= news[:title] %> </li>
   <li> <%= news[:abstract] %> </li>
   <li> <%= link_to "Read Full Article at NYTimes.com", news[:article_url] %>  <%= link_to "Delete this Article", news, method: :delete %> </li>

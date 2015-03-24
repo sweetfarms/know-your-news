@@ -24,6 +24,8 @@ class NewsController < ApplicationController
 
   def show
     @news = User.find_by_id(current_user.id).news
+    #display in reverse chronological order
+    @news = @news.order('created_at DESC')
   end
 
   def update
