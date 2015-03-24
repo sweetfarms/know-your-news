@@ -8,7 +8,7 @@ class NewsController < ApplicationController
   end
 
   def create
-    @news = News.new(user_id: current_user.id, title: params[:title], abstract: params[:abstract], article_url: params[:article_url])     
+    @news = News.new(user_id: current_user.id, subsection: params[:subsection], title: params[:title], abstract: params[:abstract], article_url: params[:article_url])     
 
     respond_to do |format|
       if @news.save

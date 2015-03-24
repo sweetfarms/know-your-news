@@ -5,9 +5,9 @@
 <% @news.each do |news| %>
 <ul>
   <li> <%= news[:created_at].strftime("%B %d, %Y") %> </li>
-  <li> <%= news[:title].html_safe %> </li>
+  <li> <%= news[:title].html_safe %>: <%= news[:subsection] %> </li>
   <li> <%= news[:abstract].html_safe %> </li>
-  <li> <%= link_to "Read Full Article at NYTimes.com", news[:article_url] %>  <%= link_to "Delete this Article", news, method: :delete %> </li>
+  <li> <%= link_to "Read Full Article at NYTimes.com", news[:article_url], :target => "_blank"%>  <%= link_to "Delete this Article", news, method: :delete %> </li>
 </ul>
 
 <% end %>

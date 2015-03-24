@@ -17,6 +17,7 @@
   </div>
     
     <% section_articles.each do |article| %>
+
       <h3><%= article[:title].html_safe %></h3>
       <div class = "line"> </div>
       <div class = "content">
@@ -28,6 +29,7 @@
 
       <%= link_to "|   Save Article", :controller => "news", 
                                       :action => "create", 
+                                      subsection: subsection,
                                       title: article[:title], 
                                       abstract: article[:abstract], 
                                       article_url: article[:link] %>
