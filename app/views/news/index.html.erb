@@ -25,7 +25,8 @@
       <li>
 
       <%= link_to "Read Article", article[:link], :target => "_blank" %>
-      <%= link_to "|   See Relevant Articles", article[:relevant_articles] %>
+
+      <%= link_to "|   Look for this topic via NYTimes.com", article[:relevant_articles], :target => "_blank" %>
 
       <%= link_to "|   Save Article", :controller => "news", 
                                       :action => "create", 

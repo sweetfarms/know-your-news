@@ -1,11 +1,9 @@
-<h1> saved successfully! </h1>
-
-<p> <%= link_to "Home", :root  %> </p>
+<h1> Your Saved Articles</h1>
 
 <% @news.each do |news| %>
 <ul>
   <li> <%= news[:created_at].strftime("%B %d, %Y") %> </li>
-  <li> <%= news[:title].html_safe %>: <%= news[:subsection] %> </li>
+  <li> <%= news[:subsection] %>: <%= news[:title].html_safe %></li>
   <li> <%= news[:abstract].html_safe %> </li>
   <li> <%= link_to "Read Full Article at NYTimes.com", news[:article_url], :target => "_blank"%>  <%= link_to "Delete this Article", news, method: :delete %> </li>
 </ul>

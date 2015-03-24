@@ -15,6 +15,12 @@
   <li>
   <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>        
   </li>
+  <li>
+  <%= link_to 'My Saved Articles', :news_show %>        
+  </li>
+  <li>
+  <%= link_to 'Home', :root %>        
+  </li>
 <% else %>
   <li>
   <%= link_to('Login', new_user_session_path)  %>  
