@@ -3,7 +3,6 @@ module NytimesHelper
   class NYTimes
     @@url_base  = "http://api.nytimes.com/svc/news/v3/content/nyt/world.json?api-key="
     @@client_id = Rails.application.secrets.nytimes_top_id
-    @@search_url_base = "http://query.nytimes.com/search/sitesearch/?action=click&contentCollection&region=TopBar&WT.nav=searchWidget&module=SearchSubmit&pgtype=Homepage#/"
 
 
     def self.retrieve_articles
