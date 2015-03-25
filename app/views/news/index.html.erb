@@ -2,7 +2,7 @@
 <h1>Know Your World</h1>
 
 
-<% @articles.each do |nav_headers, not_needed_articles| %>
+<% @articles.each do |nav_headers, only_need_headers| %>
     <%= nav_headers %>
 <% end %>
 
@@ -13,13 +13,13 @@
     
   <% section_articles.each do |article| %>
 
-<h3><%= article[:title].html_safe %> | <%= article[:geographic_facet].first %></h3>
+<h3><%= article[:title].html_safe %> </h3>
 
-  <%= article[:abstract].html_safe %>
+  <p><strong><%= article[:geographic_facet].first %></strong><span> <%= article[:abstract].html_safe %></p></span>
       
 
   <li>
-  <%= link_to "Read Article", :target => "_blank" %>
+  <%= link_to "Read Article", article[:link], :target => "_blank" %>
   <%= link_to "|   Save Article", :controller => "news", 
                                 :action => "create", 
                                 subsection: subsection,
