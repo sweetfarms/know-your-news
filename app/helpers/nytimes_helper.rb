@@ -32,21 +32,23 @@ module NytimesHelper
 
         # then, article is pushed on to the existing sections' array
         articles[article["subsection"]].push({
-          :title             => article["title"],
-          :abstract          => article["abstract"],
-          :link              => article["url"],
-          :geographic_facet  => article["geo_facet"],
-          :description_facet => article["des_facet"],
-          :relevant_articles => @@search_url_base + article["title"].split.join('+').gsub(/\W/, "+").squeeze(" ").downcase
-            
+          :title                   => article["title"],
+          :abstract                => article["abstract"],
+          :link                    => article["url"],
+          :geographic_facet        => article["geo_facet"],
+          :description_facet       => article["des_facet"],
+          :relevant_article_titles => article["related_urls"]
+          # :relevant_article_urls   => artile["related_urls"]["url"]
         })
           end
         return articles
       end
+
     end
 
     #faded dreams below
     # news = HTTParty.get(@@search_url_base + article["title"].split.join('+').gsub(/\W/, "+").squeeze(" ").downcase + "&fq=" + article["geo_facet"].split.join('+').gsub(/\W/, "+").squeeze(" ").downcase + "&api-key=" + @@search_id)
-
+    # @@search_url_base + article["title"].split.join('+').gsub(/\W/, "+").squeeze(" ").downcase
+            
 
 end
