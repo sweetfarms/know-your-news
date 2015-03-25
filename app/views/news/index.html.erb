@@ -1,54 +1,43 @@
-<body>
-<div class = "top">
+
 <h1>Know Your World</h1>
-</div>
-<ul>
 
-<div>
-  <% @articles.each do |nav_headers, not_needed_articles| %>
+
+<% @articles.each do |nav_headers, not_needed_articles| %>
     <%= nav_headers %>
-  <% end %>
-</div>
+<% end %>
 
-  <% @articles.each do |subsection, section_articles| %>
 
-  <div class = "titles" >
-    <h2><%= subsection %></h2> 
-  </div>
+<% @articles.each do |subsection, section_articles| %>
+
+  <h2><%= subsection %></h2> 
     
-    <% section_articles.each do |article| %>
+  <% section_articles.each do |article| %>
 
-      <h3><%= article[:title].html_safe %> | <%= article[:geographic_facet].first %></h3>
-      <div class = "line"> </div>
-      <div class = "content">
-      <p class= "article"> <%= article[:abstract].html_safe %> </p>
+<h3><%= article[:title].html_safe %> | <%= article[:geographic_facet].first %></h3>
+
+  <%= article[:abstract].html_safe %>
       
 
-      <li>
+  <li>
+  <%= link_to "Read Article", :target => "_blank" %>
+  <%= link_to "|   Save Article", :controller => "news", 
+                                :action => "create", 
+                                subsection: subsection,
+                                title: article[:title], 
+                                abstract: article[:abstract], 
+                                article_url: article[:link] %>
+  </li>
 
-      <%= link_to "Read Article", :target => "_blank" %>
-
-      <%= link_to "|   Save Article", :controller => "news", 
-                                      :action => "create", 
-                                      subsection: subsection,
-                                      title: article[:title], 
-                                      abstract: article[:abstract], 
-                                      article_url: article[:link] %>
-      </li>
-
-      <% unless article[:relevant_article_titles].nil? %>
+      <% unless article[:relevant_articles].nil? %>
         <h4> Related Articles </h4>
-        <% article[:relevant_article_titles].each do |related| %>
-          <%= related["suggested_link_text"] %>
-          <%= link_to "Read at NYTimes.com", related["url"], :target => "_blank" %>
+        <% article[:relevant_articles].each do |related| %>
+          <li><%= related["suggested_link_text"] %></li>
+          <li><%= link_to "Read at NYTimes.com", related["url"], :target => "_blank" %></p>
+        <% end %>
+      <% end %>
 
-      <div class = "line"> </div>
-    </div>
     <% end %>
-    <% end %>
-    <% end %>
+
   <% end %>
-</ul>
 
 
-</body>

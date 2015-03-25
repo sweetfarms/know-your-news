@@ -4,8 +4,7 @@ module NytimesHelper
     @@url_base  = "http://api.nytimes.com/svc/news/v3/content/nyt/world.json?api-key="
     @@client_id = Rails.application.secrets.nytimes_top_id
     @@search_url_base = "http://query.nytimes.com/search/sitesearch/?action=click&contentCollection&region=TopBar&WT.nav=searchWidget&module=SearchSubmit&pgtype=Homepage#/"
-    # @@search_url_base = "http://api.nytimes.com/svc/search/v2/articlesearch.json?fq="
-    # @@search_id = Rails.application.secrets.nytimes_search_id
+
 
     def self.retrieve_articles
       NYTimes.build_article_hash
@@ -32,23 +31,18 @@ module NytimesHelper
 
         # then, article is pushed on to the existing sections' array
         articles[article["subsection"]].push({
-          :title                   => article["title"],
-          :abstract                => article["abstract"],
-          :link                    => article["url"],
-          :geographic_facet        => article["geo_facet"],
-          :description_facet       => article["des_facet"],
-          :relevant_article_titles => article["related_urls"]
-          # :relevant_article_urls   => artile["related_urls"]["url"]
+          :title             => article["title"],
+          :abstract          => article["abstract"],
+          :link              => article["url"],
+          :geographic_facet  => article["geo_facet"],
+          :description_facet => article["des_facet"],
+          :relevant_articles => article["related_urls"]
         })
-          end
+        end
         return articles
       end
 
     end
-
-    #faded dreams below
-    # news = HTTParty.get(@@search_url_base + article["title"].split.join('+').gsub(/\W/, "+").squeeze(" ").downcase + "&fq=" + article["geo_facet"].split.join('+').gsub(/\W/, "+").squeeze(" ").downcase + "&api-key=" + @@search_id)
-    # @@search_url_base + article["title"].split.join('+').gsub(/\W/, "+").squeeze(" ").downcase
             
 
 end
