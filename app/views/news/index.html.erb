@@ -9,7 +9,7 @@
 
 <% @articles.each do |subsection, section_articles| %>
 
-  <h2><%= subsection %></h2> 
+<h2><%= subsection %></h2> 
     
   <% section_articles.each do |article| %>
 
@@ -20,18 +20,19 @@
 
   <li>
   <%= link_to "Read Article", article[:link], :target => "_blank" %>
-  <%= link_to "|   Save Article", :controller => "news", 
+  | <%= link_to " Save Article", :controller => "news", 
                                 :action => "create", 
                                 subsection: subsection,
                                 title: article[:title], 
                                 abstract: article[:abstract], 
-                                article_url: article[:link] %>
+                                article_url: article[:link],
+                                id: "save-article-button" %>
   </li>
 
       <% unless article[:relevant_articles].nil? %>
         <h4> Related Articles </h4>
         <% article[:relevant_articles].each do |related| %>
-          <li><%= related["suggested_link_text"] %></li>
+          <li><%= related["suggested_link_text"].html_safe %></li>
           <li><%= link_to "Read at NYTimes.com", related["url"], :target => "_blank" %></p>
         <% end %>
       <% end %>
@@ -39,5 +40,10 @@
     <% end %>
 
   <% end %>
+
+
+<h1>Saved Articles</h1>
+
+
 
 
